@@ -10,6 +10,7 @@ from rest_framework import permissions
 from rest_framework.views import APIView
 from rest_framework import status
 from slugify import slugify
+from rest_framework_simplejwt.authentication import JWTAuthentication
 # Create your views here.
 
 
@@ -123,6 +124,7 @@ class AssetAllApiView(ListAPIView):
 class AssetBid(UpdateAPIView):
   queryset = Projects.objects.all()
   serializer_class = AssetSerializer
+  authentication_classes=[JWTAuthentication]
   permission_classes =(permissions.IsAuthenticated,) 
     
   def post(self,request):
@@ -148,6 +150,7 @@ class CollecionsApiView(ListAPIView):
 class AssetCreateApiView(CreateAPIView):
   queryset =Projects.objects.all()
   serializer_class =AssetSerializer
+  authentication_classes=[JWTAuthentication]
   permission_classes=(permissions.IsAuthenticated,) 
 
   def post(self,request):
@@ -166,6 +169,7 @@ class AssetCreateApiView(CreateAPIView):
 
 class AssetDelete(DestroyAPIView):
   queryset =Projects.objects.all()
+  authentication_classes=[JWTAuthentication]
   permission_classes =(permissions.IsAuthenticated,) 
 
   def delete(self,request,pk):
@@ -178,6 +182,7 @@ class AssetDelete(DestroyAPIView):
 
 class WishlistAdd(APIView):
   queryset = Wishlist
+  authentication_classes=[JWTAuthentication]
   permission_classes =(permissions.IsAuthenticated,) 
 
   def post(self,request):
@@ -190,6 +195,7 @@ class WishlistAdd(APIView):
       return Response({'success':True,'msg':"Successfully added to wishlist"})
 
 class WishlistDelete(APIView):
+  authentication_classes=[JWTAuthentication]
   permission_classes =(permissions.IsAuthenticated,) 
 
   def post(self,request):
@@ -204,6 +210,7 @@ class WishlistAll(ListAPIView):
   queryset = Projects.objects.all()
   serializer_class = AssetsAllSerializer
   # pagination_class = AssetPagination
+  authentication_classes=[JWTAuthentication]
   permission_classes =(permissions.IsAuthenticated,)
 
   def get(self,request):
