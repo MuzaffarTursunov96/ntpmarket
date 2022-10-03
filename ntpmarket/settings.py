@@ -32,7 +32,7 @@ SECRET_KEY = "h8qaj8ttp(vy%43tf=2lde_3z-aw2-gwz!44q3u_od=85%43z^"
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = config('DEBUG')
 DEBUG = True
-CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ORIGIN_ALLOW_ALL = True
 # ALLOWED_HOSTS = [
 #     "127.0.0.1", 
 # ]
@@ -40,7 +40,7 @@ CORS_ORIGIN_ALLOW_ALL = True
 # CORS_ALLOWED_ORIGINS = [
 #     "http://127.0.0.1", 
 # ]
-CORS_ALLOW_CREDENTIALS = False
+# CORS_ALLOW_CREDENTIALS = False
 
 # ALLOWED_HOSTS = [config('ALLOWED_HOSTS')]
 ALLOWED_HOSTS = ["*"]
@@ -62,14 +62,14 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'cloudinary',
     'cloudinary_storage',
-    "corsheaders",
+    # "corsheaders",
     
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    "corsheaders.middleware.CorsMiddleware",
+    # "corsheaders.middleware.CorsMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -87,7 +87,7 @@ MIDDLEWARE = [
 # CORS_ALLOW_CREDENTIALS = True
 # # Application definition
 # ROOT_URLCONF = 'ntpmarket.urls'
-CORS_ORIGIN_WHITELIST = 'localhost:3000',
+# CORS_ORIGIN_WHITELIST = 'localhost:3000',
 
 TEMPLATES = [
     {
