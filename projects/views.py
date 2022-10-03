@@ -144,7 +144,7 @@ class AssetBid(UpdateAPIView):
    
     new_project= Projects.objects.create(
       name=project.name,
-      slug=project.slug + random.choices(string.ascii_lowercase, k=5),
+      slug=project.slug + ''.join(random.choices(string.ascii_lowercase, k=5)),
       description=project.description,
       image=project.image,
       price=project.price,
@@ -168,7 +168,7 @@ class AssetCreateApiView(CreateAPIView):
 
   def post(self,request):
     data =request.data
-    data['slug']=slugify(data['name']+random.choices(string.ascii_lowercase, k=5))
+    data['slug']=slugify(data['name']+''.join(random.choices(string.ascii_lowercase, k=5)))
     data['creator']=request.user.id
     serializer =CreateAssetSerializer(data=data)
     if serializer.is_valid(raise_exception=True):
