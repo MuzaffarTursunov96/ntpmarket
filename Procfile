@@ -1,1 +1,1 @@
-web: gunicorn ntpmarket.wsgi
+web: gunicorn --pythonpath ntpmarket ntpmarket.wsgi
