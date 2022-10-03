@@ -23,10 +23,14 @@ class Projects(models.Model):
   created_at = models.DateTimeField(auto_now_add=True)
   updated_at = models.DateTimeField(auto_now=True)
 
+  def __str__(self):
+    return self.name
 
 class Collection(models.Model):
   name =models.CharField(max_length = 255)
   avatar = models.ImageField(upload_to = 'collections/',blank=True,null=True ,default='images/example.jpg')
+  def __str__(self):
+    return self.name
 
 class History(models.Model):
   project = models.ForeignKey(Projects, on_delete = models.PROTECT)
@@ -37,6 +41,8 @@ class Image(models.Model):
   name = models.ImageField(upload_to ='images/')
   created_at = models.DateTimeField(auto_now_add=True)
   updated_at = models.DateTimeField(auto_now=True)
+  def __str__(self):
+    return self.name
 
 class Wishlist(models.Model):
   user = models.ForeignKey(User,on_delete=models.PROTECT)
