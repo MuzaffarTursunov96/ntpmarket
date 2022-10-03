@@ -49,7 +49,7 @@ ALLOWED_HOSTS = ["*"]
 
 
 INSTALLED_APPS = [
-
+    "corsheaders",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -62,11 +62,12 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'cloudinary',
     'cloudinary_storage',
-    "corsheaders",
+    
     
 ]
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -75,15 +76,14 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
-    "corsheaders.middleware.CorsMiddleware",
-    "django.middleware.common.CommonMiddleware",
+    
 ]
 
 # from corsheaders.defaults import default_headers
 
-CORS_ALLOW_ALL_ORIGINS = True 
-from ntpmarket.DEFAULTS import DEFAULT_HEADERS
-CORS_ALLOW_HEADERS = DEFAULT_HEADERS
+
+# from ntpmarket.DEFAULTS import DEFAULT_HEADERS
+# CORS_ALLOW_HEADERS = DEFAULT_HEADERS
 
 # CORS_ALLOW_CREDENTIALS = True
 # # Application definition
@@ -171,6 +171,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+CORS_ALLOW_ALL_ORIGINS = True 
 
 STATICFILES_STORAGE='whitenoise.storage.CompressedManifestStaticFilesStorage'
 
