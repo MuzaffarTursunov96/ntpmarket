@@ -33,17 +33,17 @@ SECRET_KEY = "h8qaj8ttp(vy%43tf=2lde_3z-aw2-gwz!44q3u_od=85%43z^"
 # DEBUG = config('DEBUG')
 DEBUG = True
 CORS_ORIGIN_ALLOW_ALL = True
-ALLOWED_HOSTS = [
-    "127.0.0.1", 
-]
+# ALLOWED_HOSTS = [
+#     "127.0.0.1", 
+# ]
 
-CORS_ALLOWED_ORIGINS = [
-    "http://127.0.0.1", 
-]
+# CORS_ALLOWED_ORIGINS = [
+#     "http://127.0.0.1", 
+# ]
 CORS_ALLOW_CREDENTIALS = False
 
 # ALLOWED_HOSTS = [config('ALLOWED_HOSTS')]
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ["*"]
 
 
 
