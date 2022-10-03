@@ -8,25 +8,25 @@ from datetime import datetime,timezone
 
 
 class ImageMixin:
-  def get_image(self,project):
-    ids =project.image.split(',')
-    img_links=[]
-    if len(ids)>1:
-      for id in ids:
-        if Image.objects.filter(id = int(id)).exists():
-          link = str(Image.objects.filter(id = int(id)).first().name)
-          img_links.append(link)
-    elif len(ids) == 1:
-      if len(ids[0]) > 0:
-        if Image.objects.filter(id = int(ids[0])).exists():
-          link = str(Image.objects.filter(id = int(ids[0])).first().name)
-          img_links.append(link)
-    return img_links
+  # def get_image(self,project):
+  #   ids =project.image.split(',')
+  #   img_links=[]
+  #   if len(ids)>1:
+  #     for id in ids:
+  #       if Image.objects.filter(id = int(id)).exists():
+  #         link = str(Image.objects.filter(id = int(id)).first().name)
+  #         img_links.append(link)
+  #   elif len(ids) == 1:
+  #     if len(ids[0]) > 0:
+  #       if Image.objects.filter(id = int(ids[0])).exists():
+  #         link = str(Image.objects.filter(id = int(ids[0])).first().name)
+  #         img_links.append(link)
+  #   return img_links
   
 class AssetSerializer(serializers.ModelSerializer,ImageMixin):
   creator = serializers.SerializerMethodField('get_creator') 
   history = serializers.SerializerMethodField('get_history') 
-  image = serializers.SerializerMethodField('get_image') 
+  # image = serializers.SerializerMethodField('get_image') 
   # time_left = serializers.SerializerMethodField('get_time_left')
   class Meta:
         model = Projects
@@ -49,7 +49,7 @@ class AssetSerializer(serializers.ModelSerializer,ImageMixin):
   
 
 class AssetsAllSerializer(serializers.ModelSerializer,ImageMixin):
-  image = serializers.SerializerMethodField('get_image') 
+  # image = serializers.SerializerMethodField('get_image') 
   # time_left = serializers.SerializerMethodField('get_time_left')
   class Meta:
     model = Projects
