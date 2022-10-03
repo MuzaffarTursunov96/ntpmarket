@@ -39,6 +39,7 @@ ALLOWED_HOSTS = ['*']
 
 # Application definition
 
+
 INSTALLED_APPS = [
 
     'django.contrib.admin',
@@ -110,19 +111,14 @@ DATABASES = {
         # 'PORT': config('DB_PORT'),
     }
 }
-CORS_ALLOW_HEADERS = [
-    "accept",
-    "accept-encoding",
-    "authorization",
-    "content-type",
-    "dnt",
-    "origin",
-    "user-agent",
-    "x-csrftoken",
-    "x-requested-with",
-]
-CORS_ORIGIN_ALLOW_ALL = True
-CORS_ALLOW_CREDENTIALS = False
+
+from corsheaders.defaults import default_headers
+
+CORS_ORIGIN_ALLOW_ALL = True 
+from ntpmarket.DEFAULTS import DEFAULT_HEADERS
+CORS_ALLOW_HEADERS = DEFAULT_HEADERS
+
+CORS_ALLOW_CREDENTIALS = True
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
