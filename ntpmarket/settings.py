@@ -78,9 +78,9 @@ CORS_ALLOW_HEADERS = DEFAULT_HEADERS
 CORS_ALLOW_CREDENTIALS = True
 # Application definition
 ROOT_URLCONF = 'ntpmarket.urls'
-CORS_ORIGIN_WHITELIST = (
-  'http://localhost:3000',
-)
+# CORS_ORIGIN_WHITELIST = (
+#   'http://localhost:3000',
+# )
 
 TEMPLATES = [
     {
