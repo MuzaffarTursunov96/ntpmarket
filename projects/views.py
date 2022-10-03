@@ -1,3 +1,4 @@
+from email.mime import image
 from django.shortcuts import render
 from .serializers import *
 from rest_framework.generics import RetrieveAPIView,ListAPIView,UpdateAPIView,CreateAPIView,DestroyAPIView
@@ -10,6 +11,8 @@ from rest_framework import permissions
 from rest_framework.views import APIView
 from rest_framework import status
 from slugify import slugify
+import random
+import string
 from rest_framework_simplejwt.authentication import JWTAuthentication
 # Create your views here.
 
@@ -138,6 +141,16 @@ class AssetBid(UpdateAPIView):
     project.biddings = bid
     project.bought = project.bought+1
     project.save()
+   
+    new_project= Projects.objects.create(
+      name=project.name,
+      slug=project.slug + random.choices(string.ascii_lowercase, k=5),
+      description=project.description,
+      image=project.image,
+      price=project.price,
+      creator=request.user,
+      collection=project.collection
+    )
 
     history = History.objects.create(date =datetime.now(),price=price,project=project)
 
@@ -155,7 +168,7 @@ class AssetCreateApiView(CreateAPIView):
 
   def post(self,request):
     data =request.data
-    data['slug']=slugify(data['name'])
+    data['slug']=slugify(data['name']+random.choices(string.ascii_lowercase, k=5))
     data['creator']=request.user.id
     serializer =CreateAssetSerializer(data=data)
     if serializer.is_valid(raise_exception=True):
@@ -191,6 +204,8 @@ class WishlistAdd(APIView):
     if project.creator == request.user:
       return Response({'success':False,'msg':"You can't add to wishlist your own item!" })
     else:
+      project.likes+=1
+      project.save()
       Wishlist.objects.create(user=request.user,project=project)
       return Response({'success':True,'msg':"Successfully added to wishlist"})
 
