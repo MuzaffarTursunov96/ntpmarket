@@ -40,7 +40,7 @@ DEBUG = True
 # CORS_ALLOWED_ORIGINS = [
 #     "http://127.0.0.1", 
 # ]
-# CORS_ALLOW_CREDENTIALS = False
+CORS_ALLOW_CREDENTIALS = False
 
 # ALLOWED_HOSTS = [config('ALLOWED_HOSTS')]
 ALLOWED_HOSTS = ["*"]
@@ -62,14 +62,14 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'cloudinary',
     'cloudinary_storage',
-    # "corsheaders",
+    "corsheaders",
     
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    # "corsheaders.middleware.CorsMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -80,9 +80,9 @@ MIDDLEWARE = [
 
 # from corsheaders.defaults import default_headers
 
-# CORS_ORIGIN_ALLOW_ALL = True 
-# from ntpmarket.DEFAULTS import DEFAULT_HEADERS
-# CORS_ALLOW_HEADERS = DEFAULT_HEADERS
+CORS_ORIGIN_ALLOW_ALL = True 
+from ntpmarket.DEFAULTS import DEFAULT_HEADERS
+CORS_ALLOW_HEADERS = DEFAULT_HEADERS
 
 # CORS_ALLOW_CREDENTIALS = True
 # # Application definition
