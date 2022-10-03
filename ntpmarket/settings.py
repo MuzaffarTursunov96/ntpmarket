@@ -85,13 +85,15 @@ WSGI_APPLICATION = 'ntpmarket.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+# DATABASES['default'] = dj_database_url.config()
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'nft',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': '127.0.0.1',
+        'NAME': 'd2mlthlcmi7oes',
+        'USER': 'hvdjhsqbthmpmw',
+        'PASSWORD': '35565ce989a42c244749871be9239dac62db03f292df621a3051b4b3396f2f9d',
+        'HOST': 'ec2-44-205-63-142.compute-1.amazonaws.com',
         'PORT':'5432',
         # 'NAME': config('DB_NAME'),
         # 'USER': config('DB_USER'),
