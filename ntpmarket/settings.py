@@ -36,21 +36,13 @@ DEBUG = True
 # ALLOWED_HOSTS = [config('ALLOWED_HOSTS')]
 ALLOWED_HOSTS = ['*']
 
-from corsheaders.defaults import default_headers
 
-CORS_ORIGIN_ALLOW_ALL = True 
-from ntpmarket.DEFAULTS import DEFAULT_HEADERS
-CORS_ALLOW_HEADERS = DEFAULT_HEADERS
-
-CORS_ALLOW_CREDENTIALS = True
-# Application definition
 
 
 INSTALLED_APPS = [
 
     'django.contrib.admin',
     'django.contrib.auth',
-    "corsheaders",
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -58,6 +50,7 @@ INSTALLED_APPS = [
     'accounts',
     'projects',
     'rest_framework',
+    "corsheaders",
     'rest_framework_simplejwt',
     'cloudinary',
     'cloudinary_storage',
@@ -76,6 +69,14 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
 
+from corsheaders.defaults import default_headers
+
+CORS_ORIGIN_ALLOW_ALL = True 
+from ntpmarket.DEFAULTS import DEFAULT_HEADERS
+CORS_ALLOW_HEADERS = DEFAULT_HEADERS
+
+CORS_ALLOW_CREDENTIALS = True
+# Application definition
 ROOT_URLCONF = 'ntpmarket.urls'
 
 TEMPLATES = [
