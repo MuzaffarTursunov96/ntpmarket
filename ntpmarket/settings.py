@@ -36,7 +36,13 @@ DEBUG = True
 # ALLOWED_HOSTS = [config('ALLOWED_HOSTS')]
 ALLOWED_HOSTS = ['*']
 
+from corsheaders.defaults import default_headers
 
+CORS_ORIGIN_ALLOW_ALL = True 
+from ntpmarket.DEFAULTS import DEFAULT_HEADERS
+CORS_ALLOW_HEADERS = DEFAULT_HEADERS
+
+CORS_ALLOW_CREDENTIALS = True
 # Application definition
 
 
@@ -112,13 +118,7 @@ DATABASES = {
     }
 }
 
-from corsheaders.defaults import default_headers
 
-CORS_ORIGIN_ALLOW_ALL = True 
-from ntpmarket.DEFAULTS import DEFAULT_HEADERS
-CORS_ALLOW_HEADERS = DEFAULT_HEADERS
-
-CORS_ALLOW_CREDENTIALS = True
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
