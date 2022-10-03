@@ -91,7 +91,7 @@ DATABASES = {
         'NAME': 'nft',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
-        'HOST': 'localhost',
+        'HOST': '127.0.0.1',
         'PORT':'5432',
         # 'NAME': config('DB_NAME'),
         # 'USER': config('DB_USER'),
