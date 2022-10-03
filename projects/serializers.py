@@ -22,13 +22,6 @@ class ImageMixin:
           link = str(Image.objects.filter(id = int(ids[0])).first().name)
           img_links.append(link)
     return img_links
-
-  # def get_time_left(self,project):
-  #   date_format_str = '%H:%M:%S'
-  #   ended =project.ended_date
-  #   delta =ended - datetime.now(timezone.utc)
-   
-  #   return  delta.total_seconds()/60
   
 class AssetSerializer(serializers.ModelSerializer,ImageMixin):
   creator = serializers.SerializerMethodField('get_creator') 
