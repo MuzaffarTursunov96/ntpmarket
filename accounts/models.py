@@ -34,7 +34,7 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser):
-    avatar          = models.ImageField(upload_to = f'user{os.sep}',default='images/example.jpg')
+    avatar          = models.ImageField(upload_to = f'user{os.sep}',default='images/example.jpg',blank=True,null=True)
     biograph        = models.TextField(default = '')
     email           = models.EmailField(verbose_name = 'Email', max_length = 60, unique = True)
     username        = models.CharField(max_length = 50, unique = True)
