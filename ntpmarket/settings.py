@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 import os
 import django_heroku
 import dj_database_url
+import cloudinary
+import cloudinary_storage
 
 from decouple import config
 
@@ -48,6 +50,8 @@ INSTALLED_APPS = [
     'projects',
     'rest_framework',
     'rest_framework_simplejwt',
+    'cloudinary',
+    'cloudinary_storage',
 ]
 
 MIDDLEWARE = [
@@ -146,6 +150,13 @@ STATIC_URL = '/static/'
 
 STATICFILES_STORAGE='whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'carrentuzbmuzaffar',
+    'API_KEY': '471946269558293',
+    'API_SECRET':'5PKZZwwxdWI3X7Vk3U-lzgOcQuw',
+}
+
+
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
     'rest_framework.authentication.SessionAuthentication',
@@ -156,5 +167,6 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10
 
 }
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 django_heroku.settings(locals())

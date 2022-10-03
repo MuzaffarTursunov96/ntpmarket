@@ -13,3 +13,5 @@ pytz==2022.2.1
 sqlparse==0.4.2
 whitenoise==5.0.1
 Pillow==6.2.2
+django-cloudinary-storage==0.3.0
+cloudinary==1.30.0
