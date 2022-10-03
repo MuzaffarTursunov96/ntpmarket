@@ -7,7 +7,7 @@ from datetime import datetime,timezone
 
 
 
-class ImageMixin:
+# class ImageMixin:
   # def get_image(self,project):
   #   ids =project.image.split(',')
   #   img_links=[]
@@ -23,7 +23,7 @@ class ImageMixin:
   #         img_links.append(link)
   #   return img_links
   
-class AssetSerializer(serializers.ModelSerializer,ImageMixin):
+class AssetSerializer(serializers.ModelSerializer):
   creator = serializers.SerializerMethodField('get_creator') 
   history = serializers.SerializerMethodField('get_history') 
   # image = serializers.SerializerMethodField('get_image') 
@@ -48,7 +48,7 @@ class AssetSerializer(serializers.ModelSerializer,ImageMixin):
 
   
 
-class AssetsAllSerializer(serializers.ModelSerializer,ImageMixin):
+class AssetsAllSerializer(serializers.ModelSerializer):
   # image = serializers.SerializerMethodField('get_image') 
   # time_left = serializers.SerializerMethodField('get_time_left')
   class Meta:
