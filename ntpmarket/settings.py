@@ -81,7 +81,7 @@ MIDDLEWARE = [
 
 # from corsheaders.defaults import default_headers
 
-CORS_ORIGIN_ALLOW_ALL = True 
+CORS_ALLOW_ALL_ORIGINS = True 
 from ntpmarket.DEFAULTS import DEFAULT_HEADERS
 CORS_ALLOW_HEADERS = DEFAULT_HEADERS
 
