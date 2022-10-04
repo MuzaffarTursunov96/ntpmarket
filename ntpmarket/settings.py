@@ -189,7 +189,8 @@ STATICFILES_STORAGE='whitenoise.storage.CompressedManifestStaticFilesStorage'
 #     'API_SECRET':'5PKZZwwxdWI3X7Vk3U-lzgOcQuw',
 # }
 
-
+MEDIA_URL ='/images/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
     'rest_framework.authentication.SessionAuthentication',
