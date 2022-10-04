@@ -50,9 +50,15 @@ class Wishlist(models.Model):
   created_at = models.DateTimeField(auto_now_add=True)
   updated_at = models.DateTimeField(auto_now=True)
 
+  def __str__(self):
+    return self.name
+    
 class UserBiddings(models.Model):
   user = models.ForeignKey(User,on_delete=models.PROTECT)
   project = models.ForeignKey(Projects,on_delete=models.PROTECT)
   price = models.FloatField(default = 0)
   created_at = models.DateTimeField(auto_now_add=True)
   updated_at = models.DateTimeField(auto_now=True)
+
+  def __str__(self):
+    return self.name
