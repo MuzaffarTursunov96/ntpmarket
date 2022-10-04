@@ -12,8 +12,8 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 
-import cloudinary
-import cloudinary_storage
+# import cloudinary
+# import cloudinary_storage
 
 # from decouple import config
 
@@ -58,8 +58,8 @@ INSTALLED_APPS = [
     'projects',
     'rest_framework',
     'rest_framework_simplejwt',
-    'cloudinary',
-    'cloudinary_storage',
+    # 'cloudinary',
+    # 'cloudinary_storage',
     "corsheaders",
 
 
@@ -183,11 +183,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATICFILES_STORAGE='whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'carrentuzbmuzaffar',
-    'API_KEY': '471946269558293',
-    'API_SECRET':'5PKZZwwxdWI3X7Vk3U-lzgOcQuw',
-}
+# CLOUDINARY_STORAGE = {
+#     'CLOUD_NAME': 'carrentuzbmuzaffar',
+#     'API_KEY': '471946269558293',
+#     'API_SECRET':'5PKZZwwxdWI3X7Vk3U-lzgOcQuw',
+# }
 
 MEDIA_URL ='/images/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
@@ -201,5 +201,5 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10
 
 }
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+# DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
