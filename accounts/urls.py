@@ -9,5 +9,6 @@ urlpatterns = [
   path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
   path('api-auth/', include('rest_framework.urls')),
   path('me',UserGetMe.as_view(),name='get-me'),
+  path('delete-account',DeleteAccount.as_view(),name='delete-account')
   
 ]
