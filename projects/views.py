@@ -334,6 +334,7 @@ class UserGetMe(APIView):
     assets_count =len(Projects.objects.filter(creator =user))
     return Response({
       'name':user.username,
+      'avatar':user.avatar,
       'biograph':user.biograph,
       'wishlist_count':wishlist_count,
       'biddings_count':biddings_count,
