@@ -52,7 +52,7 @@ class Wishlist(models.Model):
 
   def __str__(self):
     return self.name
-    
+
 class UserBiddings(models.Model):
   user = models.ForeignKey(User,on_delete=models.PROTECT)
   project = models.ForeignKey(Projects,on_delete=models.PROTECT)
@@ -61,4 +61,4 @@ class UserBiddings(models.Model):
   updated_at = models.DateTimeField(auto_now=True)
 
   def __str__(self):
-    return self.name
+    return self.project.name
