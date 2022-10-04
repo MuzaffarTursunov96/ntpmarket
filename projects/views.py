@@ -315,7 +315,7 @@ class OwnerBiddings(ListAPIView):
     projects = []
     for data in datas:
       projects.append(data.project)
-    return Response(projects)
+    return Response({'data':projects})
 
 class UserGetMe(APIView):
   authentication_classes=[JWTAuthentication]
