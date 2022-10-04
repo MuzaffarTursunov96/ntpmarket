@@ -304,3 +304,26 @@ class OwnerBiddings(ListAPIView):
 
     serializer = self.get_serializer(datas, many=True)
     return Response(serializer.data)
+
+class UserGetMe(APIView):
+  authentication_classes=[JWTAuthentication]
+  permission_classes =(permissions.IsAuthenticated,)
+
+  def get(self,request):
+    user = request.user
+    total_spent=0
+    biddings = UserBiddings.objects.filter(user =user)
+    for bid in biddings:
+      total_spent +=bid.price
+
+    wishlist_count =len(Wishlist.objects.filter(user =user))
+    biddings_count =len(biddings)
+    assets_count =len(Projects.objects.filter(creator =user))
+    return Response({
+      'name':user.name,
+      'biograph':user.biograph,
+      'wishlist_count':wishlist_count,
+      'biddings_count':biddings_count,
+      'assets_count':assets_count,
+      'total_spent':total_spent
+    })
