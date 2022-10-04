@@ -261,7 +261,8 @@ class AssetUpdate(APIView):
     project = get_object_or_404(Projects, id =id)
     if project.creator == request.user:
       project.time_left = data['time_left']
-      project.price = data['price']
+      if data['price']:
+        project.price = data['price']
       project.save()
       return Response({'success':True, 'msg':'Successfully updated'})
     else:
