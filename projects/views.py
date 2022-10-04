@@ -221,8 +221,13 @@ class WishlistDelete(APIView):
 
   def post(self,request):
     id =request.data['id']
+    
     if Wishlist.objects.filter(project_id=id,user_id=request.user.id).exists():
       Wishlist.objects.filter(project_id=id,user_id=request.user.id).delete()
+      if Projects.objects.filter(id = id).exists():
+        project = Projects.objects.filter(id = id).first()
+        project.likes -=1
+        project.save()
       return Response({'success':True, 'msg':'Successfully removed from wishlist'})
     else:
       return Response({'success':True,'msg':status.HTTP_404_NOT_FOUND})
