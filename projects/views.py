@@ -36,10 +36,15 @@ class AssetPagination(PageNumberPagination):
 class AssetApiView(RetrieveAPIView):
   queryset = Projects.objects.all()
   serializer_class =AssetSerializer
+  authentication_classes=[JWTAuthentication]
   lookup_url_kwarg ='slug'
 
   def get(self,request,slug):
     project =Projects.objects.filter(slug=slug).first()
+    if request.user.is_authenticated():
+      if Wishlist.objects.filter(user =request.user,project=project).exists():
+        project.liked=True
+        
     serializer_data=AssetSerializer(project)
     return Response({'date':serializer_data.data})
 
