@@ -186,7 +186,7 @@ class AssetDelete(DestroyAPIView):
   authentication_classes=[JWTAuthentication]
   permission_classes =(permissions.IsAuthenticated,) 
 
-  def delete(self,request,pk):
+  def get(self,request,pk):
     project = get_object_or_404(Projects, id =pk)
     if project.creator == request.user:
       project.delete()
