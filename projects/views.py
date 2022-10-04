@@ -266,5 +266,5 @@ class AssetUpdate(APIView):
       project.save()
       return Response({'success':True, 'msg':'Successfully updated'})
     else:
-      return Response({'success':False, 'msg':status.HTTP_404_NOT_FOUND})
+      return Response({'success':False, 'msg':"You can't update this item!"})
 
