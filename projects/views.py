@@ -168,9 +168,12 @@ class AssetCreateApiView(CreateAPIView):
   permission_classes=(permissions.IsAuthenticated,) 
 
   def post(self,request):
+    _mutable = data._mutable
+    data._mutable = True
     data =request.data
     data['slug']=slugify(data['name']+''.join(random.choices(string.ascii_lowercase, k=5)))
     data['creator']=request.user.id
+    data._mutable = _mutable
     serializer =CreateAssetSerializer(data=data)
     if serializer.is_valid(raise_exception=True):
       serializer.save()
