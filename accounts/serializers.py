@@ -55,7 +55,7 @@ class RefreshTokenSerializer(serializers.Serializer):
     refresh = serializers.CharField()
 
     default_error_messages = {
-        'bad_token': _('Token is invalid or expired')
+        'bad_token': ('Token is invalid or expired')
     }
 
     def validate(self, attrs):
