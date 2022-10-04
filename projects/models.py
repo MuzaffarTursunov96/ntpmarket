@@ -49,3 +49,10 @@ class Wishlist(models.Model):
   project = models.ForeignKey(Projects,on_delete=models.PROTECT)
   created_at = models.DateTimeField(auto_now_add=True)
   updated_at = models.DateTimeField(auto_now=True)
+
+class UserBiddings(models.Model):
+  user = models.ForeignKey(User,on_delete=models.PROTECT)
+  project = models.ForeignKey(Projects,on_delete=models.PROTECT)
+  price = models.IntegerField(default = 0)
+  created_at = models.DateTimeField(auto_now_add=True)
+  updated_at = models.DateTimeField(auto_now=True)
