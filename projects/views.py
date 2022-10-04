@@ -124,7 +124,12 @@ class AssetAllApiView(ListAPIView):
       else:
         data =Projects.objects.all()
     # return data
-
+    if request.user.is_authenticated:
+      wishlists = Wishlist.objects.filter(user=request.user)
+      for wishlist in wishlists:
+        if wishlist.project in data:
+          wishlist.project.liked=True
+    
     page = self.paginate_queryset(data)
     if page is not None:
         serializer = self.get_serializer(page, many=True)
