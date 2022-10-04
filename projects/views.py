@@ -289,10 +289,10 @@ class AssetsOwner(ListAPIView):
   def get(self,request):
       datas =Projects.objects.filter(creator = request.user)
 
-      page = self.paginate_queryset(datas)
-      if page is not None:
-          serializer = self.get_serializer(page, many=True)
-          return self.get_paginated_response({'data':serializer.data})
+      # page = self.paginate_queryset(datas)
+      # if page is not None:
+      #     serializer = self.get_serializer(page, many=True)
+      #     return self.get_paginated_response({'data':serializer.data})
 
       serializer = self.get_serializer(datas, many=True)
       return Response(serializer.data)
@@ -306,10 +306,10 @@ class OwnerBiddings(ListAPIView):
   def get(self,request):
     datas =UserBiddings.objects.filter(user = request.user)
 
-    page = self.paginate_queryset(datas)
-    if page is not None:
-        serializer = self.get_serializer(page, many=True)
-        return self.get_paginated_response({'data':serializer.data})
+    # page = self.paginate_queryset(datas)
+    # if page is not None:
+    #     serializer = self.get_serializer(page, many=True)
+    #     return self.get_paginated_response({'data':serializer.data})
 
     serializer = self.get_serializer(datas, many=True)
     return Response(serializer.data)
