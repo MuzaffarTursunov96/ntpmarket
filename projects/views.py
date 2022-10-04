@@ -142,6 +142,7 @@ class AssetBid(UpdateAPIView):
     project.biddings = bid
     project.bought = project.bought+1
     project.save()
+
    
     new_project= Projects.objects.create(
       name=project.name,
@@ -154,6 +155,8 @@ class AssetBid(UpdateAPIView):
     )
 
     history = History.objects.create(date =datetime.now(),price=price,project=project)
+
+    biddings = UserBiddings.objects.create(user = request.user, project=project, price = price)
 
     return Response({'success':True,'msg':'Congratulations , successfuly bought!'})
 
