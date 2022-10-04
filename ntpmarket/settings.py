@@ -12,8 +12,8 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 
-# import cloudinary
-# import cloudinary_storage
+import cloudinary
+import cloudinary_storage
 
 # from decouple import config
 
