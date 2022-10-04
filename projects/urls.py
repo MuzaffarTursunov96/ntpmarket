@@ -14,5 +14,5 @@ path('wishlist/get',WishlistAll.as_view(),name='wishlist-all'),
 path('asset/update',AssetUpdate.as_view(),name='asset-update'),
 path('assets/projects/owner',AssetsOwner.as_view(),name='asset-owner'),
 path('assets/projects/biddings',OwnerBiddings.as_view(),name='owner-biddings'),
-path('me',UserGetMe.as_view(),name='get-me'),
+
 ]
