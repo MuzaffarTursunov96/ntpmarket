@@ -137,7 +137,7 @@ class AssetBid(UpdateAPIView):
     project = get_object_or_404(Projects, id =id)
     if project.creator == request.user:
       return Response({'success':False,'msg':"You can't buy own product! "})
-    bid = json.load(project.biddings)
+    bid = project.biddings
     bid.append({'name':request.user.username,'avatar':str(request.user.avatar)})
     project.biddings = bid
     project.bought = project.bought+1
