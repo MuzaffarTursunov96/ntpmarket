@@ -64,3 +64,8 @@ class CreateAssetSerializer(serializers.ModelSerializer):
   class Meta:
     model = Projects
     fields = ["name","slug","image","price","time_left","collection","creator"]
+  
+class UserBiddingsSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = UserBiddings
+    fields =['project','price']

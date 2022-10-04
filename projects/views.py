@@ -287,3 +287,20 @@ class AssetsOwner(ListAPIView):
 
       serializer = self.get_serializer(datas, many=True)
       return Response(serializer.data)
+
+class OwnerBiddings(ListAPIView):
+  queryset = UserBiddings.objects.all()
+  serializer_class = UserBiddingsSerializer
+  authentication_classes=[JWTAuthentication]
+  permission_classes =(permissions.IsAuthenticated,)
+
+  def get(self,request):
+    datas =UserBiddings.objects.filter(user = request.user)
+
+    page = self.paginate_queryset(datas)
+    if page is not None:
+        serializer = self.get_serializer(page, many=True)
+        return self.get_paginated_response({'data':serializer.data})
+
+    serializer = self.get_serializer(datas, many=True)
+    return Response(serializer.data)
