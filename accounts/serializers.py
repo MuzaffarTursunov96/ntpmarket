@@ -32,8 +32,9 @@ class RegisterSerializer(serializers.ModelSerializer):
         return attrs
 
     def create(self, validated_data):
-        data = validated_data.pop('password2')
-        user = User.objects.create(**data)
+        if "password2" in validated_data:
+            del validated_data["password2"]
+        user = User.objects.create(**validated_data)
 
         user.set_password(validated_data['password'])
         user.save()
