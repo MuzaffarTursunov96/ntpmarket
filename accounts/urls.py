@@ -10,6 +10,6 @@ urlpatterns = [
   path('api-auth/', include('rest_framework.urls')),
   path('me',UserGetMe.as_view(),name='get-me'),
   path('delete-account',DeleteAccount.as_view(),name='delete-account'),
-  path('logout/', LogoutView.as_view(), name='auth_logout'),
+  # path('logout/', LogoutView.as_view(), name='auth_logout'),
   
 ]
