@@ -35,7 +35,6 @@ class RegisterSerializer(serializers.ModelSerializer):
         user = User.objects.create(
             username=validated_data['username'],
             email=validated_data['email'],
-            # avatar=validated_data['avatar'],
             biograph=validated_data['biograph'],
         )
 
