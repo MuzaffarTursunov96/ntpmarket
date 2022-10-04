@@ -248,3 +248,22 @@ class WishlistAll(ListAPIView):
 
     serializer = self.get_serializer(datas, many=True)
     return Response(serializer.data)
+  
+class AssetUpdate(APIView):
+  queryset = Projects.objects.all()
+  serializer_class = AssetsAllSerializer
+  authentication_classes=[JWTAuthentication]
+  permission_classes =(permissions.IsAuthenticated,)
+
+  def post(self,request):
+    data = request.data
+    id =data['id']
+    project = get_object_or_404(Projects, id =id)
+    if project.creator == request.user:
+      project.time_left = data['time_left']
+      project.price = data['price']
+      project.save()
+      return Response({'success':True, 'msg':'Successfully updated'})
+    else:
+      return Response({'success':False, 'msg':status.HTTP_404_NOT_FOUND})
+
