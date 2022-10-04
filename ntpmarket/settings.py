@@ -11,12 +11,11 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-import django_heroku
-import dj_database_url
-import cloudinary
-import cloudinary_storage
 
-from decouple import config
+# import cloudinary
+# import cloudinary_storage
+
+# from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -32,15 +31,15 @@ SECRET_KEY = "h8qaj8ttp(vy%43tf=2lde_3z-aw2-gwz!44q3u_od=85%43z^"
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = config('DEBUG')
 DEBUG = True
-# CORS_ORIGIN_ALLOW_ALL = True
+
 # ALLOWED_HOSTS = [
-#     "127.0.0.1", 
+#     "127.0.0.1",
 # ]
 
 # CORS_ALLOWED_ORIGINS = [
-#     "http://127.0.0.1", 
+#     "http://127.0.0.1",
 # ]
-CORS_ALLOW_CREDENTIALS = False
+# CORS_ALLOW_CREDENTIALS = False
 
 # ALLOWED_HOSTS = [config('ALLOWED_HOSTS')]
 ALLOWED_HOSTS = ["*"]
@@ -49,7 +48,6 @@ ALLOWED_HOSTS = ["*"]
 
 
 INSTALLED_APPS = [
-
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -63,31 +61,28 @@ INSTALLED_APPS = [
     'cloudinary',
     'cloudinary_storage',
     "corsheaders",
-    
+
+
 ]
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware'
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+
 ]
 
-# from corsheaders.defaults import default_headers
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = False
+ROOT_URLCONF = 'ntpmarket.urls'
 
-CORS_ORIGIN_ALLOW_ALL = True 
-from ntpmarket.DEFAULTS import DEFAULT_HEADERS
-CORS_ALLOW_HEADERS = DEFAULT_HEADERS
 
-# CORS_ALLOW_CREDENTIALS = True
-# # Application definition
-# ROOT_URLCONF = 'ntpmarket.urls'
-# CORS_ORIGIN_WHITELIST = 'localhost:3000',
 
 TEMPLATES = [
     {
@@ -115,12 +110,14 @@ WSGI_APPLICATION = 'ntpmarket.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'nft',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': 'localhost',
-        'PORT':'5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR,'db.sqlite3'),
+        # 'ENGINE': 'django.db.backends.postgresql',
+        # 'NAME': 'nft',
+        # 'USER': 'postgres',
+        # 'PASSWORD': 'postgres',
+        # 'HOST': 'localhost',
+        # 'PORT':'5432',
         # 'NAME': config('DB_NAME'),
         # 'USER': config('DB_USER'),
         # 'PASSWORD': config('DB_PASSWORD'),
@@ -170,6 +167,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+
+# CORS_ORIGIN_WHITELIST = (
+#         'http://localhost:3000',
+#         'https://nft-market-with-mantine.vercel.app',
+#         'https://nft-market-axelreid.vercel.app'
+#         #'localhost:5000',
+#         #'127.0.0.1:9000',
+#         #'127.0.0.1:5000',
+#     )
+
+
 
 STATICFILES_STORAGE='whitenoise.storage.CompressedManifestStaticFilesStorage'
 
@@ -192,4 +202,3 @@ REST_FRAMEWORK = {
 }
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
-django_heroku.settings(locals())
