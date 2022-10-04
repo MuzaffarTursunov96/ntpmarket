@@ -69,3 +69,4 @@ class UserBiddingsSerializer(serializers.ModelSerializer):
   class Meta:
     model = UserBiddings
     fields =['project','price']
+    depth =1
