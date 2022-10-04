@@ -13,6 +13,7 @@ from rest_framework_simplejwt.views import (
 from .serializers import *
 from rest_framework.views import APIView
 from django.shortcuts import get_object_or_404
+from rest_framework.response import Response
 
 
 class RegisterView(generics.CreateAPIView):
@@ -35,3 +36,4 @@ class DeleteAccount(APIView):
         wishlists = Wishlist.objects.filter(user=user)
         wishlists.delete()
         user.delete()
+        return Response({'success':True,'msg':'User successfully deleted!'})
