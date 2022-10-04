@@ -312,10 +312,11 @@ class OwnerBiddings(ListAPIView):
     #     return self.get_paginated_response({'data':serializer.data})
 
     # serializer = self.get_serializer(datas, many=True)
-    projects = []
-    for data in datas:
-      projects.append(data.project)
-    return Response({'data':projects})
+    # projects = []
+    # for data in datas:
+    #   projects.append(data.project)
+    serializer = self.get_serializer(datas, many=True)
+    return Response(serializer.data)
 
 class UserGetMe(APIView):
   authentication_classes=[JWTAuthentication]
