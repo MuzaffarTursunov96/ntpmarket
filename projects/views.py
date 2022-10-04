@@ -19,6 +19,10 @@ from rest_framework_simplejwt.authentication import JWTAuthentication
 
 
 class AssetPagination(PageNumberPagination):
+  page_size = 10
+  page_size_query_param = 'page_size'
+  max_page_size = 10000
+
   def get_paginated_response(self, data):
       return Response({
           'next': self.get_next_link(),
