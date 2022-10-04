@@ -32,11 +32,7 @@ class RegisterSerializer(serializers.ModelSerializer):
         return attrs
 
     def create(self, validated_data):
-        user = User.objects.create(
-            username=validated_data['username'],
-            email=validated_data['email'],
-            biograph=validated_data['biograph'],
-        )
+        user = User.objects.create(**validated_data)
 
         user.set_password(validated_data['password'])
         user.save()
@@ -46,7 +42,6 @@ class RegisterSerializer(serializers.ModelSerializer):
 
 class LoginSerializer(TokenObtainPairSerializer):
     def validate(self, attrs):
-        # implement your logic here
         data = super().validate(attrs)
         data['username'] = self.user.username
         data['avatar'] = str(self.user.avatar)
