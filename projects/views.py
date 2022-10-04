@@ -268,3 +268,19 @@ class AssetUpdate(APIView):
     else:
       return Response({'success':False, 'msg':"You can't update this item!"})
 
+class AssetsOwner(ListAPIView):
+  queryset = Projects.objects.all()
+  serializer_class = AssetsAllSerializer
+  authentication_classes=[JWTAuthentication]
+  permission_classes =(permissions.IsAuthenticated,)
+
+  def get(self,request):
+      datas =Projects.objects.filter(creator = request.user)
+
+      page = self.paginate_queryset(datas)
+      if page is not None:
+          serializer = self.get_serializer(page, many=True)
+          return self.get_paginated_response({'data':serializer.data})
+
+      serializer = self.get_serializer(datas, many=True)
+      return Response(serializer.data)

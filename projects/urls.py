@@ -12,5 +12,6 @@ path('wishlist/add/',WishlistAdd.as_view(),name='wishlist-add'),
 path('wishlist/remove/',WishlistDelete.as_view(),name='wishlist-revome'),
 path('wishlist/get',WishlistAll.as_view(),name='wishlist-all'),
 path('asset/update',AssetUpdate.as_view(),name='asset-update'),
+path('assets/projects/owner',AssetUpdate.as_view(),name='asset-update'),
 
 ]
