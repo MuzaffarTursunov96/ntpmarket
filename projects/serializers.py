@@ -70,3 +70,9 @@ class UserBiddingsSerializer(serializers.ModelSerializer):
     model = UserBiddings
     fields =['project','price']
     depth =1
+
+class GetSlugSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = Projects
+    fields =['slug']
+    

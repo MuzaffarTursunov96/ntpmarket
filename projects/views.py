@@ -355,3 +355,10 @@ class UserGetMe(APIView):
       'assets_count':assets_count,
       'total_spent':total_spent
     })
+
+class ProjectSlugs(APIView):
+
+  def get(self,request):
+    projects =Projects.objects.all().order_by('-created_at')[:10]
+    serializer = GetSlugSerializer(projects,many=True)
+    return Response(serializer.data)
