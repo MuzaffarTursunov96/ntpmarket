@@ -31,7 +31,7 @@ SECRET_KEY = "h8qaj8ttp(vy%43tf=2lde_3z-aw2-gwz!44q3u_od=85%43z^"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = config('DEBUG')
-DEBUG = True
+DEBUG = False
 
 # ALLOWED_HOSTS = [
 #     "127.0.0.1",
