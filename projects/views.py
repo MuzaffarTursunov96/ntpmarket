@@ -382,3 +382,4 @@ class DefaultBidd(APIView):
         project.bought = project.bought+1
         project.save()
         history = History.objects.create(date =datetime.now(),price=random.uniform(0.5, 25.5),project=project)
+    return Response({'success':True})
