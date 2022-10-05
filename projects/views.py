@@ -162,15 +162,15 @@ class AssetBid(UpdateAPIView):
     project.save()
 
    
-    new_project= Projects.objects.create(
-      name=project.name,
-      slug=project.slug + ''.join(random.choices(string.ascii_lowercase, k=5)),
-      description=project.description,
-      image=project.image,
-      price=project.price,
-      creator=request.user,
-      collection=project.collection
-    )
+    # new_project= Projects.objects.create(
+    #   name=project.name,
+    #   slug=project.slug + ''.join(random.choices(string.ascii_lowercase, k=5)),
+    #   description=project.description,
+    #   image=project.image,
+    #   price=project.price,
+    #   creator=request.user,
+    #   collection=project.collection
+    # )
 
     history = History.objects.create(date =datetime.now(),price=price,project=project)
 
