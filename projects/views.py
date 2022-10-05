@@ -372,7 +372,7 @@ class FooterItems(APIView):
 class DefaultBidd(APIView):
   def get(self,request):
     projects =Projects.objects.all()
-    from itemparsing import names
+    from .itemparsing import names
     for project in projects:
       x=random.randint(5,20)
       for i in range(x):
