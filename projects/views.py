@@ -369,3 +369,16 @@ class FooterItems(APIView):
     serializer = FooterItemsSerializer(projects,many=True)
     return Response(serializer.data)
 
+class DefaultBidd(APIView):
+  def get(self,request):
+    projects =Projects.objects.all()
+    from itemparsing import names
+    for project in projects:
+      x=random.randint(5,20)
+      for i in range(x):
+        bid = project.biddings
+        bid.append({'name':random.choice(names),'avatar':str('user/photo_2022-09-26_13-25-29.jpg')})
+        project.biddings = bid
+        project.bought = project.bought+1
+        project.save()
+        history = History.objects.create(date =datetime.now(),price=random.uniform(0.5, 25.5),project=project)
