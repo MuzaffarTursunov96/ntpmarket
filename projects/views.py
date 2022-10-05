@@ -228,6 +228,8 @@ class WishlistAdd(APIView):
     if project.creator == request.user:
       return Response({'success':False,'msg':"You can't add to wishlist your own item!" })
     else:
+      if Wishlist.objects.filter(user=request.user,project=project).exists():
+        return Response({'success':False,'msg':"Alredy in your wishlist!" })
       project.likes+=1
       project.save()
       Wishlist.objects.create(user=request.user,project=project)
