@@ -75,4 +75,8 @@ class GetSlugSerializer(serializers.ModelSerializer):
   class Meta:
     model = Projects
     fields =['slug']
-    
+
+class FooterItemsSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = Projects
+    fields =['slug','image','price']

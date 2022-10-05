@@ -14,5 +14,6 @@ path('wishlist/get',WishlistAll.as_view(),name='wishlist-all'),
 path('asset/update',AssetUpdate.as_view(),name='asset-update'),
 path('assets/projects/owner',AssetsOwner.as_view(),name='asset-owner'),
 path('assets/projects/biddings',OwnerBiddings.as_view(),name='owner-biddings'),
-path('item-slug',ProjectSlugs.as_view(),name='project-slugs')
+path('item-slug',ProjectSlugs.as_view(),name='project-slugs'),
+path('footer-tems',FooterItems.as_view(),name='footer-items')
 ]
