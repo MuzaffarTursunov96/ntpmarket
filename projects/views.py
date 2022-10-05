@@ -387,7 +387,7 @@ class DefaultBidd(APIView):
 class CheckWishlist(APIView):
   authentication_classes=[JWTAuthentication]
   permission_classes =(permissions.IsAuthenticated,)
-  def get(self,request):
+  def post(self,request):
     id =request.data['id']
     project = get_object_or_404(Projects, id =id)
     if Wishlist.objects.filter(user=request.user,project=project).exists():
