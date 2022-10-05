@@ -67,3 +67,9 @@ class RefreshTokenSerializer(serializers.Serializer):
             RefreshToken(self.token).blacklist()
         except TokenError:
             self.fail('bad_token')
+
+
+class UserContactSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = User
+    fields=['username','email','biograph','avatar']

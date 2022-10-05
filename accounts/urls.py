@@ -11,5 +11,6 @@ urlpatterns = [
   path('me',UserGetMe.as_view(),name='get-me'),
   path('delete-account',DeleteAccount.as_view(),name='delete-account'),
   # path('logout/', LogoutView.as_view(), name='auth_logout'),
+  path('user-contact',UserContact.as_view(),name='user-contact'),
   
 ]

@@ -368,3 +368,4 @@ class FooterItems(APIView):
     projects =Projects.objects.all().order_by('-created_at')
     serializer = FooterItemsSerializer(projects,many=True)
     return Response(serializer.data)
+

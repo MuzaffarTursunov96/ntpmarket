@@ -10,6 +10,7 @@ from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
 )
+from rest_framework_simplejwt.authentication import JWTAuthentication
 from .serializers import *
 from rest_framework.views import APIView
 from django.shortcuts import get_object_or_404
@@ -51,3 +52,14 @@ class LogoutView(GenericAPIView):
         sz.is_valid(raise_exception=True)
         sz.save()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+class UserContact(APIView):
+  authentication_classes=[JWTAuthentication]
+
+  def get(self,request):
+    if request.user.is_authenticated:
+      userserializer = UserContactSerializer(request.user)
+      return Response(serializers.data)
+    else:
+        return Response({'success':False,'msg':status.HTTP_401_UNAUTHORIZED})
+        

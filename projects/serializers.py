@@ -7,6 +7,7 @@ from datetime import datetime,timezone
 
 
 
+
 # class ImageMixin:
   # def get_image(self,project):
   #   ids =project.image.split(',')
@@ -80,3 +81,5 @@ class FooterItemsSerializer(serializers.ModelSerializer):
   class Meta:
     model = Projects
     fields =['slug','image','price']
+
+
