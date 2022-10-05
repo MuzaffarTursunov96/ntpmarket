@@ -383,3 +383,14 @@ class DefaultBidd(APIView):
         project.save()
         history = History.objects.create(date =datetime.now(),price=random.uniform(0.5, 25.5),project=project)
     return Response({'success':True})
+  
+class CheckWishlist(APIView):
+  authentication_classes=[JWTAuthentication]
+  permission_classes =(permissions.IsAuthenticated,)
+  def get(self,request):
+    id =request.data['id']
+    project = get_object_or_404(Projects, id =id)
+    if Wishlist.objects.filter(user=request.user,project=project).exists():
+      return Response({'liked':True})
+    else:
+      return Response({'liked':False})
