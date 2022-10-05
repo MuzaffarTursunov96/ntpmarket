@@ -59,7 +59,7 @@ class UserContact(APIView):
   def get(self,request):
     if request.user.is_authenticated:
       userserializer = UserContactSerializer(request.user)
-      return Response(serializers.data)
+      return Response(userserializer.data)
     else:
         return Response({'success':False,'msg':status.HTTP_401_UNAUTHORIZED})
         
