@@ -367,7 +367,7 @@ class ProjectSlugs(APIView):
   
 class FooterItems(APIView):
   def get(self,request):
-    projects =Projects.objects.all().order_by('-created_at')
+    projects =Projects.objects.all().order_by('-created_at')[:20]
     serializer = FooterItemsSerializer(projects,many=True)
     return Response(serializer.data)
 
